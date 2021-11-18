@@ -54,7 +54,7 @@ function drawPacman() {
 drawPacman();
 
 $(document).on("keydown", function(e) {
-    console.log(e);
+    // console.log(e);
     if (e.key === "w" || e.key === "ArrowUp") {
         if (world[pacman.y - 1][pacman.x] != 0){
             pacman.y--;
