@@ -21,8 +21,19 @@ function createWorld(length, width) {
     }
     return worldArr;
 }
-// console.log(createWorld(10, 20));
+var world = createWorld(15, 20);
+console.log(world.length, world[0].length)
 
-function drawWorld() {
-    
+function displayWorld() {
+    var output = '';
+
+    for (var i = 0; i < world.length; i++) {
+        output += "<div class='row'>"
+        for (var j = 0; j < world[i].length; j++) {
+            output = output += "<div class='" + worldObjects[world[i][j]] + "'></div>";
+        }
+        output += "</div>";
+    }
+    document.getElementById('world').innerHTML = output;
 }
+displayWorld();
