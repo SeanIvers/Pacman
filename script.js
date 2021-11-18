@@ -19,6 +19,7 @@ function createWorld(length, width) {
             }
         }
     }
+    worldArr[1][1] = 1;
     return worldArr;
 }
 var world = createWorld(15, 20);
@@ -37,3 +38,15 @@ function displayWorld() {
     document.getElementById('world').innerHTML = output;
 }
 displayWorld();
+
+var pacman = {
+    x: 1,
+    y: 1
+}
+
+function drawPacman() {
+    document.getElementById("pacman").style.top = pacman.x * 40 + "px";
+    document.getElementById("pacman").style.left = pacman.y * 40 + "px";
+}
+
+drawPacman();
