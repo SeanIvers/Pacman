@@ -24,6 +24,7 @@ function createWorld(length, width) {
         }
     }
     worldArr[1][1] = 1;
+    worldArr[length - 2][width - 2] = 1;
     console.log(worldArr);
     return worldArr;
 }
@@ -50,12 +51,27 @@ var pacman = {
     y: 1
 }
 
+var rowLength = document.querySelectorAll(".row:first-of-type > *").length;
+// console.log(rowNum);
+
+var ghost = {
+    x: rowLength - 2,
+    y: world.length - 2
+}
+
 function drawPacman() {
     document.getElementById("pacman").style.top = pacman.y * 40 + "px";
     document.getElementById("pacman").style.left = pacman.x * 40 + "px";
 }
 
 drawPacman();
+
+function drawGhost() {
+    document.getElementById("ghost").style.top = ghost.y * 40 + "px";
+    document.getElementById("ghost").style.left = ghost.x * 40 + "px";
+}
+
+drawGhost();
 
 $(document).on("keydown", function(e) {
     // console.log(e);
@@ -66,7 +82,7 @@ $(document).on("keydown", function(e) {
         }
         if (world[pacman.y][pacman.x] == 3) {
             score += 50;
-            console.log(score);
+            // console.log(score);
         }
     }
     else if (e.key === "s" || e.key === "ArrowDown") {
@@ -76,7 +92,7 @@ $(document).on("keydown", function(e) {
         }
         if (world[pacman.y][pacman.x] == 3) {
             score += 50;
-            console.log(score);
+            // console.log(score);
         }
     }
     else if (e.key === "a" || e.key === "ArrowLeft") {
@@ -86,7 +102,7 @@ $(document).on("keydown", function(e) {
         }
         if (world[pacman.y][pacman.x] == 3) {
             score += 50;
-            console.log(score);
+            // console.log(score);
         }
     }
     else if (e.key === "d" || e.key === "ArrowRight") {
@@ -96,7 +112,7 @@ $(document).on("keydown", function(e) {
         }
         if (world[pacman.y][pacman.x] == 3) {
             score += 50;
-            console.log(score);
+            // console.log(score);
         }
     }
     scoreDiv.innerText = "Score: " + score;
@@ -105,3 +121,6 @@ $(document).on("keydown", function(e) {
     displayWorld();
 })
 
+function moveGhost() {
+    
+}
