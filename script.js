@@ -1,7 +1,8 @@
 var worldObjects = {
     0: "brick",
     1: "blank",
-    2: "coin"
+    2: "coin",
+    3: "cherry"
 };
 
 function getRandObjNum() {
@@ -74,6 +75,7 @@ $(document).on("keydown", function(e) {
             pacman.x++;
         }
     }
+    world[pacman.y][pacman.x] = 1;
     drawPacman();
     displayWorld();
 })

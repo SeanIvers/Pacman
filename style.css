@@ -24,6 +24,13 @@ div.coin {
     display: inline-block;
     background-size: contain;
 }
+div.cherry {
+    background: url(./images/cherry.png);
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    background-size: contain;
+}
 #pacman {
     background: url(./images/pacman.gif);
     height: 40px;
