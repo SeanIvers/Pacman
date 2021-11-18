@@ -46,8 +46,34 @@ var pacman = {
 }
 
 function drawPacman() {
-    document.getElementById("pacman").style.top = pacman.x * 40 + "px";
-    document.getElementById("pacman").style.left = pacman.y * 40 + "px";
+    document.getElementById("pacman").style.top = pacman.y * 40 + "px";
+    document.getElementById("pacman").style.left = pacman.x * 40 + "px";
 }
 
 drawPacman();
+
+$(document).on("keydown", function(e) {
+    console.log(e);
+    if (e.key === "w" || e.key === "ArrowUp") {
+        if (world[pacman.y - 1][pacman.x] != 0){
+            pacman.y--;
+        }
+    }
+    else if (e.key === "s" || e.key === "ArrowDown") {
+        if (world[pacman.y + 1][pacman.x] != 0) {
+            pacman.y++;
+        }
+    }
+    else if (e.key === "a" || e.key === "ArrowLeft") {
+        if (world[pacman.y][pacman.x - 1] != 0) {
+            pacman.x--;
+        }
+    }
+    else if (e.key === "d" || e.key === "ArrowRight") {
+        if (world[pacman.y][pacman.x + 1] != 0) {
+            pacman.x++;
+        }
+    }
+    drawPacman();
+    displayWorld();
+})
