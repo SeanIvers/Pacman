@@ -41,3 +41,7 @@ div.cherry {
     top: 40px;
     left: 40px;
 }
+#score {
+    color: white;
+    font-size: larger;
+}

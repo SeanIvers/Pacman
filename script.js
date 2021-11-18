@@ -1,3 +1,6 @@
+var score = 0;
+var scoreDiv = document.getElementById("score");
+
 var worldObjects = {
     0: "brick",
     1: "blank",
@@ -24,6 +27,7 @@ function createWorld(length, width) {
     console.log(worldArr);
     return worldArr;
 }
+// Create world with custom length and width
 var world = createWorld(15, 20);
 // console.log(world.length, world[0].length)
 
@@ -58,24 +62,46 @@ $(document).on("keydown", function(e) {
     if (e.key === "w" || e.key === "ArrowUp") {
         if (world[pacman.y - 1][pacman.x] != 0){
             pacman.y--;
+            document.getElementById("pacman").style.transform = "rotate(270deg)";
+        }
+        if (world[pacman.y][pacman.x] == 3) {
+            score += 50;
+            console.log(score);
         }
     }
     else if (e.key === "s" || e.key === "ArrowDown") {
         if (world[pacman.y + 1][pacman.x] != 0) {
             pacman.y++;
+            document.getElementById("pacman").style.transform = "rotate(90deg)";
+        }
+        if (world[pacman.y][pacman.x] == 3) {
+            score += 50;
+            console.log(score);
         }
     }
     else if (e.key === "a" || e.key === "ArrowLeft") {
         if (world[pacman.y][pacman.x - 1] != 0) {
             pacman.x--;
+            document.getElementById("pacman").style.transform = "rotate(180deg)";
+        }
+        if (world[pacman.y][pacman.x] == 3) {
+            score += 50;
+            console.log(score);
         }
     }
     else if (e.key === "d" || e.key === "ArrowRight") {
         if (world[pacman.y][pacman.x + 1] != 0) {
             pacman.x++;
+            document.getElementById("pacman").style.transform = "rotate(0deg)";
+        }
+        if (world[pacman.y][pacman.x] == 3) {
+            score += 50;
+            console.log(score);
         }
     }
+    scoreDiv.innerText = "Score: " + score;
     world[pacman.y][pacman.x] = 1;
     drawPacman();
     displayWorld();
 })
+
