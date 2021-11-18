@@ -1,0 +1,13 @@
+div.row div{
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+    display: inline-block;
+}
+div.brick {
+    background-color: blue;
+}
+div.coin img{
+    width: 20px;
+    height: 20px;
+}
