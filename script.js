@@ -20,10 +20,11 @@ function createWorld(length, width) {
         }
     }
     worldArr[1][1] = 1;
+    console.log(worldArr);
     return worldArr;
 }
 var world = createWorld(15, 20);
-console.log(world.length, world[0].length)
+// console.log(world.length, world[0].length)
 
 function displayWorld() {
     var output = '';

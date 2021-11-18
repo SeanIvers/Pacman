@@ -17,9 +17,12 @@ div.row div{
 div.brick {
     background-color: blue;
 }
-div.coin img{
+div.coin {
+    background: url("./images/coin.png");
     width: 40px;
     height: 40px;
+    display: inline-block;
+    background-size: contain;
 }
 #pacman {
     background: url(./images/pacman.gif);
