@@ -125,39 +125,102 @@ $(document).on("keydown", function(e) {
 })
 
 function moveGhost() {
-    // calculate distance
-    // calculate next move
-    // can't be brick
-    // can't be visited
-    var distanceArr = [
-        ((pacman.x - ghost.x) ** 2 + (pacman.y - ghost.y - 1) ** 2) ** 0.5,
-        ((pacman.x - ghost.x) ** 2 + (pacman.y - ghost.y + 1) ** 2) ** 0.5,
-        ((pacman.x - ghost.x - 1) ** 2 + (pacman.y - ghost.y) ** 2) ** 0.5,
-        ((pacman.x - ghost.x + 1) ** 2 + (pacman.y - ghost.y) ** 2) ** 0.5
-    ];
-    var minDistance = distanceArr[0];
-    var minIndex = 0;
-    for (element of distanceArr) {
-        // console.log(element);
-        if (element < minDistance) {
-            minDistance = element;
-        }
-    }
-    minIndex = distanceArr.findIndex(element => element === minDistance);
-    console.log(minIndex);
-    if (minIndex === 1 && world[ghost.y - 1][ghost.x] != 0) {
-        ghost.y--;
-    }
-    if (minIndex === 0 && world[ghost.y + 1][ghost.x] != 0) {
-        ghost.y++;
-    }
-    if (minIndex === 3 && world[ghost.y][ghost.x - 1] != 0) {
-        ghost.x--;
-    }
-    if (minIndex === 2 && world[ghost.y][ghost.x + 1] != 0) {
-        ghost.x++;
-    }
+    // var position2 = [ghost.x, ghost.y];
+    // console.log(position2);
+    // var distanceArr = [
+    //     ((pacman.x - ghost.x) ** 2 + (pacman.y - ghost.y - 1) ** 2) ** 0.5,
+    //     ((pacman.x - ghost.x) ** 2 + (pacman.y - ghost.y + 1) ** 2) ** 0.5,
+    //     ((pacman.x - ghost.x - 1) ** 2 + (pacman.y - ghost.y) ** 2) ** 0.5,
+    //     ((pacman.x - ghost.x + 1) ** 2 + (pacman.y - ghost.y) ** 2) ** 0.5
+    // ];
+    // var minDistance = distanceArr[0];
+    // var minIndex = 0;
+    // for (element of distanceArr) {
+    //     if (element < minDistance) {
+    //         minDistance = element;
+    //     }
+    // }
+    // console.log(minDistance);
+    // minIndex = distanceArr.findIndex(element => element === minDistance);
+    // if (minIndex === 0 && world[ghost.y + 1][ghost.x] != 0) {
+    //     ghost.y++;
+    // }
+    // else if (minIndex === 1 && world[ghost.y - 1][ghost.x] != 0) {
+    //     ghost.y--;
+    // }
+    // else if (minIndex === 2 && world[ghost.y][ghost.x + 1] != 0) {
+    //     ghost.x++;
+    // }
+    // else if (minIndex === 3 && world[ghost.y][ghost.x - 1] != 0) {
+    //     ghost.x--;
+    // }
+    // console.log(minIndex);
+    // var position = [ghost.x, ghost.y];
+    // console.log(position);
     // var distance = ((pacman.x - ghost.x) ** 2 + (pacman.y - ghost.y) ** 2) ** 0.5;
+    // console.log(distance)
+    function randomOption(max) {
+        return Math.floor(Math.random() * max);
+    }
+    // console.log(randomOption);
+    switch(randomOption(2)) { // Random movement that tends toward the player
+        case 0:
+            switch(randomOption(4)) {
+                case 0:
+                    if (world[ghost.y + 1][ghost.x] != 0) {
+                        ghost.y++;
+                    }
+                    break;
+                case 1:
+                    if (world[ghost.y - 1][ghost.x] != 0) {
+                        ghost.y--;
+                    }
+                    break;
+                case 2:
+                    if (world[ghost.y][ghost.x + 1] != 0) {
+                        ghost.x++;
+                    }
+                    break;
+                case 3:
+                    if (world[ghost.y][ghost.x - 1] != 0) {
+                        ghost.x--;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            break;
+        case 1:
+            var distanceArr = [
+                ((pacman.x - ghost.x) ** 2 + (pacman.y - ghost.y - 1) ** 2) ** 0.5,
+                ((pacman.x - ghost.x) ** 2 + (pacman.y - ghost.y + 1) ** 2) ** 0.5,
+                ((pacman.x - ghost.x - 1) ** 2 + (pacman.y - ghost.y) ** 2) ** 0.5,
+                ((pacman.x - ghost.x + 1) ** 2 + (pacman.y - ghost.y) ** 2) ** 0.5
+            ];
+            var minDistance = distanceArr[0];
+            var minIndex = 0;
+            for (element of distanceArr) {
+                if (element < minDistance) {
+                    minDistance = element;
+                }
+            }
+            // console.log(minDistance);
+            minIndex = distanceArr.findIndex(element => element === minDistance);
+            if (minIndex === 0 && world[ghost.y + 1][ghost.x] != 0) {
+                ghost.y++;
+            }
+            else if (minIndex === 1 && world[ghost.y - 1][ghost.x] != 0) {
+                ghost.y--;
+            }
+            else if (minIndex === 2 && world[ghost.y][ghost.x + 1] != 0) {
+                ghost.x++;
+            }
+            else if (minIndex === 3 && world[ghost.y][ghost.x - 1] != 0) {
+                ghost.x--;
+            }
+        default:
+            break;
+    }
 }
 
 function gameLoop() {
